@@ -76,7 +76,7 @@ class AddStudentsActivity : AppCompatActivity(),
                 val selectedItem = parent.getItemAtPosition(position).toString()
 
                 if (selectedSpecialties.size < 3) {
-                    if (selectedItem.endsWith("(бюджет)")) {
+                    if (selectedItem.endsWith("[Бюджет]")) {
                         if (!budgetSpecialtySelected) {
                             selectedSpecialties.add(selectedItem)
                             budgetSpecialtySelected = true

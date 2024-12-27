@@ -33,103 +33,115 @@ class Auth : AppCompatActivity() {
         button.setOnClickListener(View.OnClickListener {
             if (email.text.toString().isNotEmpty() && pass.text.toString().isNotEmpty()) {
                 if (pass.text.toString().length >= 8) {
-                    when(spinner.selectedItem.toString())
+                    if (email.text.toString().contains("@", ignoreCase = true) && email.text.toString().contains(".", ignoreCase = true))
                     {
-                        "Преподаватель" -> {
+                        when(spinner.selectedItem.toString())
+                        {
+                            "Преподаватель" -> {
 
-                            if (((pref.getString("emailTeacher", "")) == "") && ((pref.getString("passwordTeacher", "")) == "")
-                            ) {
-                                val ed = pref.edit()
-                                ed.putString("emailTeacher", email.text.toString())
-                                ed.putString("passwordTeacher", pass.text.toString())
-                                ed.apply()
+                                if (((pref.getString("emailTeacher", "")) == "") && ((pref.getString("passwordTeacher", "")) == "")
+                                ) {
+                                    val ed = pref.edit()
+                                    ed.putString("emailTeacher", email.text.toString())
+                                    ed.putString("passwordTeacher", pass.text.toString())
+                                    ed.apply()
 
-                                val intent = Intent(this, ViewStudentsActivity::class.java)
-                                startActivity(intent)
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    startActivity(intent)
 
-                            } else if (((pref.getString(
-                                    "emailTeacher",
-                                    ""
-                                )) == email.text.toString()) && ((pref.getString(
-                                    "passwordTeacher",
-                                    ""
-                                )) == pass.text.toString())
-                            ) {
+                                } else if (((pref.getString(
+                                        "emailTeacher",
+                                        ""
+                                    )) == email.text.toString()) && ((pref.getString(
+                                        "passwordTeacher",
+                                        ""
+                                    )) == pass.text.toString())
+                                ) {
 
-                                val intent = Intent(this, ViewStudentsActivity::class.java)
-                                startActivity(intent)
-                            } else {
-                                val alert = AlertDialog.Builder(this)
-                                    .setTitle("Неверно")
-                                    .setMessage("Данные введены неверно")
-                                    .setPositiveButton("Попробовать еще раз",null)
-                                    .create()
-                                    .show()
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    startActivity(intent)
+                                } else {
+                                    val alert = AlertDialog.Builder(this)
+                                        .setTitle("Неверно")
+                                        .setMessage("Данные введены неверно")
+                                        .setPositiveButton("Попробовать еще раз",null)
+                                        .create()
+                                        .show()
+                                }
+                            }
+                            "Студент" -> {
+
+                                if (((pref.getString("emailStudent", "")) == "") && ((pref.getString("passwordStudent", "")) == "")
+                                ) {
+                                    val ed = pref.edit()
+                                    ed.putString("emailStudent", email.text.toString())
+                                    ed.putString("passwordStudent", pass.text.toString())
+                                    ed.apply()
+
+                                    val intent = Intent(this, ViewTeachersActivity::class.java)
+                                    startActivity(intent)
+
+                                } else if (((pref.getString(
+                                        "emailStudent",
+                                        ""
+                                    )) == email.text.toString()) && ((pref.getString(
+                                        "passwordStudent",
+                                        ""
+                                    )) == pass.text.toString())
+                                ) {
+
+                                    val intent = Intent(this, ViewTeachersActivity::class.java)
+                                    startActivity(intent)
+
+                                } else {
+                                    val alert = AlertDialog.Builder(this)
+                                        .setTitle("Неверно")
+                                        .setMessage("Данные введены неверно")
+                                        .setPositiveButton("Попробовать еще раз",null)
+                                        .create()
+                                        .show()
+                                }
+                            }
+                            "Приёмная комиссия" -> {
+                                if (((pref.getString("emailComission", "")) == "") && ((pref.getString("passwordComission", "")) == "")
+                                ) {
+                                    val ed = pref.edit()
+                                    ed.putString("emailComission", email.text.toString())
+                                    ed.putString("passwordComission", pass.text.toString())
+                                    ed.apply()
+
+                                    val intent = Intent(this, ViewStudentsActivity::class.java)
+                                    startActivity(intent)
+
+                                } else if (((pref.getString(
+                                        "emailComission",
+                                        ""
+                                    )) == email.text.toString()) && ((pref.getString(
+                                        "passwordComission",
+                                        ""
+                                    )) == pass.text.toString())
+                                ) {
+                                    val intent = Intent(this, ViewStudentsActivity::class.java)
+                                    startActivity(intent)
+                                } else {
+                                    val alert = AlertDialog.Builder(this)
+                                        .setTitle("Ошибка")
+                                        .setMessage("Данные введены неверно")
+                                        .setPositiveButton("Попробовать еще раз",null)
+                                        .create()
+                                        .show()
+                                }
                             }
                         }
-                        "Студент" -> {
-
-                            if (((pref.getString("emailStudent", "")) == "") && ((pref.getString("passwordStudent", "")) == "")
-                            ) {
-                                val ed = pref.edit()
-                                ed.putString("emailStudent", email.text.toString())
-                                ed.putString("passwordStudent", pass.text.toString())
-                                ed.apply()
-
-                                val intent = Intent(this, ViewTeachersActivity::class.java)
-                                startActivity(intent)
-
-                            } else if (((pref.getString(
-                                    "emailStudent",
-                                    ""
-                                )) == email.text.toString()) && ((pref.getString(
-                                    "passwordStudent",
-                                    ""
-                                )) == pass.text.toString())
-                            ) {
-
-                                val intent = Intent(this, ViewTeachersActivity::class.java)
-                                startActivity(intent)
-
-                            } else {
-                                val alert = AlertDialog.Builder(this)
-                                    .setTitle("Неверно")
-                                    .setMessage("Данные введены неверно")
-                                    .setPositiveButton("Попробовать еще раз",null)
-                                    .create()
-                                    .show()
-                            }
-                        }
-                        "Приёмная комиссия" -> {
-                            if (((pref.getString("emailComission", "")) == "") && ((pref.getString("passwordComission", "")) == "")
-                            ) {
-                                val ed = pref.edit()
-                                ed.putString("emailComission", email.text.toString())
-                                ed.putString("passwordComission", pass.text.toString())
-                                ed.apply()
-
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-
-                            } else if (((pref.getString(
-                                    "emailComission",
-                                    ""
-                                )) == email.text.toString()) && ((pref.getString(
-                                    "passwordComission",
-                                    ""
-                                )) == pass.text.toString())
-                            ) {
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-                            } else {
-                                val alert = AlertDialog.Builder(this)
-                                    .setTitle("Ошибка")
-                                    .setMessage("Данные введены неверно")
-                                    .setPositiveButton("Попробовать еще раз",null)
-                                    .create()
-                                    .show()
-                            }
-                        }
+                    }
+                    else
+                    {
+                        val alert = AlertDialog.Builder(this)
+                            .setTitle("Ошибка")
+                            .setMessage("Введите верную почту")
+                            .setPositiveButton("Попробовать еще раз",null)
+                            .create()
+                            .show()
                     }
 
                 } else {

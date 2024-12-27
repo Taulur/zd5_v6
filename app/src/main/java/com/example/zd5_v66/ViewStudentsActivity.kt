@@ -40,7 +40,6 @@ class ViewStudentsActivity : AppCompatActivity() {
     private lateinit var selDatBtn: Button
     private var currentPosition: Int = -1
     private var students: MutableList<Student> = mutableListOf()
-
     var selectedDate: String = ""
 
     @SuppressLint("MissingInflatedId")

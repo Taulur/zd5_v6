@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Колледж</string>
     <string-array name="spec_types">
-        <item>ПР(бюджет)</item>
-        <item>ПР(платное)</item>
-        <item>ПГС(бюджет)</item>
-        <item>ПГС(платное)</item>
-        <item>ДЗ(бюджет)</item>
-        <item>ДЗ(платное)</item>
+        <item>Информ. системы [Бюджет]</item>
+        <item>Информ. системы [Коммерция]</item>
+        <item>Строительство [Бюджет]</item>
+        <item>Строительство [Коммерция]</item>
+        <item>Дизайн [Бюджет]</item>
+        <item>Дизайн [Коммерция]</item>
     </string-array>
 
     <string-array name="Roles">
